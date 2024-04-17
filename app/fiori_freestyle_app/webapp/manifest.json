@@ -1,0 +1,174 @@
+{
+  "_version": "1.49.0",
+  "sap.app": {
+    "id": "com.nttdata.fiorifreestyleapp",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:worklist",
+      "version": "1.9.0",
+      "toolsId": "24364a53-2c6a-4c11-a401-9aea02ced1ef"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/browse/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "localUri": "localService/metadata.xml",
+          "odataVersion": "4.0"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.111.0",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.f": {},
+        "sap.suite.ui.generic.template": {},
+        "sap.ui.comp": {},
+        "sap.ui.generic.app": {},
+        "sap.ui.table": {},
+        "sap.ushell": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "com.nttdata.fiorifreestyleapp.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
+      }
+    },
+    "resources": {
+      "css": [
+      {
+        "uri": "css/style.css"
+      }
+      ]
+    },
+		"config": {
+			"fullWidth": true
+		},
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "viewType": "XML",
+        "viewPath": "com.nttdata.fiorifreestyleapp.view",
+        "controlId": "app",
+        "controlAggregation": "pages",
+        "bypassed": {
+          "target": [
+            "notFound"
+          ]
+        },
+        "async": true
+      },
+      "routes": [
+        {
+          "pattern": "",
+          "name": "worklist",
+          "target": [
+            "worklist"
+          ]
+        },
+        {
+          "pattern": "Products/{objectId}",
+          "name": "object",
+          "target": [
+            "object"
+          ]
+        },
+        {
+          "pattern": "create/Products/{objectId}",
+          "name": "create",
+          "target": [
+            "create"
+          ]
+        },
+				{
+					"pattern": "edit/Products/{objectId}",
+					"name": "edit",
+					"target": "edit"
+				}
+      ],
+      "targets": {
+        "worklist": {
+          "viewName": "Worklist",
+          "viewId": "worklist",
+          "viewLevel": 1,
+          "title": "{i18n>worklistViewTitle}"
+        },
+        "object": {
+          "viewName": "Object",
+          "viewId": "object",
+          "viewLevel": 2,
+          "title": "{i18n>objectViewTitle}"
+        },
+        "objectNotFound": {
+          "viewName": "ObjectNotFound",
+          "viewId": "objectNotFound"
+        },
+        "notFound": {
+          "viewName": "NotFound",
+          "viewId": "notFound"
+        },
+        "create": {
+          "viewName": "Create",
+          "viewId": "create",
+          "title": "{i18n>objectViewTitle}"
+        },
+        "edit": {
+          "viewName": "Edit",
+          "viewId": "edit"
+        }
+      }
+    },
+    "rootView": {
+      "viewName": "com.nttdata.fiorifreestyleapp.view.App",
+      "type": "XML",
+			"async": true,
+			"id": "app"
+    }
+  }
+}

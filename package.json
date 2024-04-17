@@ -1,0 +1,47 @@
+{
+    "name": "pilot_project",
+    "version": "1.0.0",
+    "description": "A simple CAP project.",
+    "repository": "<Add your repository here>",
+    "license": "UNLICENSED",
+    "private": true,
+    "dependencies": {
+        "@sap/cds": "^6",
+        "express": "^4",
+        "hdb": "^0.19.0"
+    },
+    "devDependencies": {
+        "@sap/ux-specification": "^1.108.3",
+        "rimraf": "^3.0.2",
+        "sqlite3": "^5.1.4"
+    },
+    "scripts": {
+        "start": "cds run",
+        "watch-fiori_elements_app": "cds watch --open fiori_elements_app/webapp/index.html?sap-ui-xx-viewCache=false",
+        "undeploy": "cf undeploy pilot_project --delete-services --delete-service-keys --delete-service-brokers",
+        "build": "rimraf resources mta_archives && mbt build --mtar archive",
+        "deploy": "cf deploy mta_archives/archive.mtar --retries 1",
+        "watch-fiori_freestyle_app": "cds watch --open fiori_freestyle_app/webapp/index.html?sap-ui-xx-viewCache=false",
+        "watch-demo.smartcontrols": "cds watch --open demo.smartcontrols/webapp/index.html?sap-ui-xx-viewCache=false",
+        "watch-fiori_freestyle_app2": "cds watch --open fiori_freestyle_app2/webapp/index.html?sap-ui-xx-viewCache=false"
+    },
+    "cds": {
+        "requires": {
+            "db": {
+                "kind": "sqlite",
+                "[production]": {
+                    "kind": "hana"
+                },
+                "model": "*"
+            }
+        },
+        "hana": {
+            "deploy-format": "hdbtable"
+        }
+    },
+    "sapux": [
+        "app/fiori_elements_app",
+        "app/fiori_freestyle_app",
+        "app/fiori_freestyle_app2"
+    ]
+}

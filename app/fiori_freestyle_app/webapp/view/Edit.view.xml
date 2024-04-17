@@ -1,0 +1,118 @@
+<mvc:View controllerName="com.nttdata.fiorifreestyleapp.controller.Edit" xmlns="sap.uxap" xmlns:m="sap.m" xmlns:f="sap.f" xmlns:form="sap.ui.layout.form" xmlns:mvc="sap.ui.core.mvc">
+    <ObjectPageLayout id="ObjectPageLayout" showTitleInHeaderContent="true" alwaysShowContentHeader="false" preserveHeaderStateOnScroll="false" headerContentPinnable="true" isChildPage="true" upperCaseAnchorBar="false">
+        <headerTitle>
+            <ObjectPageDynamicHeaderTitle id="_IDGenObjectPageDynamicHeaderTitle1">
+                <expandedHeading>
+                    <m:Title id="_IDGenTitle1" text="{title}" wrapping="true" class="sapUiSmallMarginEnd" />
+                </expandedHeading>
+
+                <snappedHeading>
+                    
+                </snappedHeading>
+
+                <actions>
+                        <m:MenuButton id="_IDGenMenuButton1" icon="sap-icon://action" type="Transparent" class="sapUiSmallMarginTop">
+                            <m:menu>
+                                <m:Menu>
+                                    <m:MenuItem text="Send E-Mail" icon="sap-icon://email" press="onSendEMail" />
+                                </m:Menu>
+                            </m:menu>
+                        </m:MenuButton>
+                </actions>
+            </ObjectPageDynamicHeaderTitle>
+        </headerTitle>
+
+        <headerContent>
+           
+        </headerContent>
+
+<sections>
+            <ObjectPageSection id="_IDGenObjectPageSection1" title="{i18n>ObjectDescriptionTabTitle}" titleUppercase="false">
+                <subSections>
+                    <ObjectPageSubSection id="_IDGenObjectPageSubSection1" showTitle="false">
+                        <blocks>
+                            <form:SimpleForm id="_IDGenSimpleForm1" class="sapUxAPObjectPageSubSectionAlignContent" layout="ColumnLayout" columnsM="2" columnsL="3" columnsXL="4">
+                                <m:Label id="_IDGenLabel8" text="{i18n>ObjectProductDescription}" />
+                                <m:Input id="_IDGenText1" value="{description}" />
+                            </form:SimpleForm>
+                        </blocks>
+                    </ObjectPageSubSection>
+                </subSections>
+            </ObjectPageSection>
+            <ObjectPageSection id="_IDGenObjectPageSection2" title="{i18n>ObjectProductInformationTabTitle}" titleUppercase="false">
+                <subSections>
+                    <ObjectPageSubSection id="_IDGenObjectPageSubSection2" showTitle="false">
+                        <blocks>
+                            <form:SimpleForm id="_IDGenSimpleForm2" class="sapUxAPObjectPageSubSectionAlignContent" layout="ColumnLayout" columnsM="2" columnsL="3" columnsXL="4">
+                                <m:Label id="_IDGenLabel9" text="{i18n>ObjectProductId}" />
+                                <m:Input id="_IDGenText2" value="{identifier}"/>
+
+                                <m:Label id="_IDGenLabel10" text="{i18n>ObjectProductName}" />
+                                <m:Input id="_IDGenText3" value="{title}" />
+
+                                <m:Label id="_IDGenLabel11" text="{i18n>ObjectProductWeight}" />
+                                <m:Input id="_IDGenText4" value="{weight}" />
+
+                                <m:Label id="_IDGenLabel12" text="{i18n>ObjectProductIngredients}" />
+                                <m:Input id="_IDGenText5" value="{ingredients}" />
+
+                                <m:Label id="_IDGenLabel13" text="{i18n>ObjectProductFormat}" />
+                                <m:Input id="_IDGenText6" value="{format}" />
+
+                                <m:Label id="_IDGenLabel14" text="{i18n>ObjectProductPrice}" />
+                                <m:Input id="_IDGenText7" value="{price} {currency_code}" />
+
+                                <m:Label id="_IDGenLabel15" text="{i18n>ObjectProductRating}" />
+                                <m:RatingIndicator id="_IDGenRatingIndicator2" maxValue="5" value="{rate}" editable="false" />
+
+                                <m:Label id="_IDGenLabel16" text="{i18n>ObjectProductInStock}" />
+                                <m:Input id="_IDGenProgressIndicator1" value="{availability}"/>
+                            </form:SimpleForm>
+                        </blocks>
+                    </ObjectPageSubSection>
+                </subSections>
+            </ObjectPageSection>
+
+            <ObjectPageSection id="_IDGenObjectPageSection3" title="{i18n>ObjectSupplierinfoTabTitle}" titleUppercase="false">
+                <subSections>
+                    <ObjectPageSubSection id="_IDGenObjectPageSubSection3" showTitle="false">
+                        <blocks>
+                            <form:SimpleForm id="_IDGenSimpleForm3" class="sapUxAPObjectPageSubSectionAlignContent" layout="ColumnLayout" columnsM="2" columnsL="3" columnsXL="4">
+                                <m:Label id="_IDGenLabel17" text="{i18n>ObjectSupplierName}" />
+                                <m:Input id="_IDGenText8" value="{supplier/name}" />
+
+                                <m:Label id="_IDGenLabel17.1" text="{i18n>ObjectSupplierIdentifier}" />
+                                <m:Input id="_IDGenText8.1" value="{supplier/identifier}" />
+
+                                <m:Label id="_IDGenLabel18" text="{i18n>ObjectSupplierPhone}" />
+                                <m:Input id="_IDGenText9" value="{supplier/phone}" />
+
+                                <m:Label id="_IDGenLabel19" text="{i18n>ObjectSupplierStreet}" />
+                                <m:Input id="_IDGenText10" value="{supplier/street}" />
+
+                                <m:Label id="_IDGenLabel19.1" text="{i18n>ObjectSupplierBuilding}" />
+                                <m:Input id="_IDGenText10.1" value="{supplier/building}" />
+
+                                <m:Label id="_IDGenLabel20" text="{i18n>ObjectSupplierCity}" />
+                                <m:Input id="_IDGenText11" value="{supplier/city}" />
+                                
+                                <m:Label id="_IDGenLabel20.1" text="{i18n>ObjectSupplierPostCode}" />
+                                <m:Input id="_IDGenText11.1" value="{supplier/postCode}" />
+
+                                <m:Label id="_IDGenLabel21" text="{i18n>ObjectSupplierCountry}" />
+                                <m:Input id="_IDGenText12" value="{supplier/country}" />
+                            </form:SimpleForm>
+                        </blocks>
+                    </ObjectPageSubSection>
+                </subSections>
+            </ObjectPageSection>
+        </sections>
+        <footer>
+            <m:OverflowToolbar id="_IDGenOverflowToolbar1">
+                <m:ToolbarSpacer id="_IDGenToolbarSpacer1" />
+                <m:Button id="_IDGenButton8" type="Accept" text="Save" press="onSave"/>
+                <m:Button id="_IDGenButton9" type="Reject" text="Cancel" press="onCancel"/>
+            </m:OverflowToolbar>
+        </footer>
+    </ObjectPageLayout>
+</mvc:View>

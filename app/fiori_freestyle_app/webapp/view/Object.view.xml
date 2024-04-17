@@ -1,0 +1,158 @@
+<mvc:View controllerName="com.nttdata.fiorifreestyleapp.controller.Object" xmlns="sap.uxap" xmlns:m="sap.m" xmlns:f="sap.f" xmlns:form="sap.ui.layout.form" xmlns:mvc="sap.ui.core.mvc">
+    <ObjectPageLayout id="ObjectPageLayout" showTitleInHeaderContent="true" alwaysShowContentHeader="false" preserveHeaderStateOnScroll="false" headerContentPinnable="true" isChildPage="true" upperCaseAnchorBar="false">
+        <headerTitle>
+            <ObjectPageDynamicHeaderTitle id="_IDGenObjectPageDynamicHeaderTitle1" class="sapFDynamicPageTitleTop sapFDynamicPageTitleTopBreadCrumbsOnly">
+                <expandedHeading>
+                    <m:Title id="_IDGenTitle1" text="{title}" wrapping="true" class="sapUiSmallMarginEnd sapUiSmallMarginTop" />
+                </expandedHeading>
+                <snappedHeading>
+                    <m:FlexBox id="_IDGenFlexBox1" wrap="Wrap" fitContainer="true" alignItems="Center">
+                        <m:FlexBox id="_IDGenFlexBox2" wrap="NoWrap" fitContainer="true" alignItems="Center" class="sapUiTinyMarginEnd">
+                            <m:Avatar id="_IDGenAvatar1" src="{image_url}" displaySize="S" displayShape="Square" class="sapUiTinyMarginEnd" />
+                            <m:Title id="_IDGenTitle2" text="{title}" wrapping="true" />
+                        </m:FlexBox>
+                    </m:FlexBox>
+                </snappedHeading>
+                <actions>
+                        <m:Button id="_IDGenToggleButton1" text="Edit" type="Emphasized" press=".onEdit" class="sapUiSmallMarginTop" />
+                        <m:Button id="_IDGenButton6" text="Delete" type="Transparent" press=".onDelete" class="sapUiSmallMarginTop" />
+                        <m:MenuButton id="_IDGenMenuButton1" icon="sap-icon://action" type="Transparent" class="sapUiSmallMarginTop">
+                            <m:menu>
+                                <m:Menu>
+                                    <m:MenuItem text="Send E-Mail" icon="sap-icon://email" press="onSendEMail" />
+                                </m:Menu>
+                            </m:menu>
+                        </m:MenuButton>
+                </actions>
+            </ObjectPageDynamicHeaderTitle>
+        </headerTitle>
+
+        <headerContent>
+            <m:FlexBox id="_IDGenFlexBox3" wrap="Wrap" fitContainer="true" class="sapUiSmallMarginBottom">
+                <m:Avatar id="_IDGenAvatar2" src="{image_url}" class="sapUiLargeMarginEnd" displaySize="S" displayShape="Square" />
+                <m:VBox id="_IDGenVBox1" class="sapUiMediumMarginEnd ">
+                    <m:Title id="_IDGenTitle3" text="{i18n>ObjectDetailsTitle}" class="sapUiSmallMarginBottom sapUiSmallMarginBottom" />
+                    <m:HBox class="sapUiTinyMarginBottom" renderType="Bare">
+                        <m:Label id="_IDGenLabel1" text="{i18n>ObjectProductIdText}:" class="sapUiTinyMarginEnd" />
+                        <m:Text id="_IDGenObjectAttribute1" text="{identifier}" />
+                    </m:HBox>
+                    <m:HBox class="sapUiTinyMarginBottom" renderType="Bare">
+                        <m:Label id="_IDGenLabel2" text="{i18n>ObjectAvailabilityTitle}:" class="sapUiTinyMarginEnd" />
+                        <m:Text id="_IDGenObjectAttribute2" text="{availability} " />
+                    </m:HBox>
+                    <m:HBox>
+                        <m:Label id="_IDGenLabel3" text="{i18n>ObjectProductRating}:" class="sapUiTinyMarginEnd" />
+                        <m:RatingIndicator id="_IDGenRatingIndicator1" maxValue="5" value="{rate}" editable="false" />
+                    </m:HBox>
+                </m:VBox>
+                <m:VBox id="_IDGenVBox2" class="sapUiMediumMarginEnd sapUiSmallMarginBottom">
+                    <m:Title id="_IDGenTitle4" text="{i18n>ObjectSupplierTitle}" class="sapUiSmallMarginBottom" />
+                    <m:HBox class="sapUiTinyMarginBottom" renderType="Bare">
+                        <m:Label id="_IDGenLabel4" text="{i18n>ObjectNameText}:" class="sapUiTinyMarginEnd" />
+                        <m:Text id="_IDGenObjectAttribute3" text="{supplier/name} ({supplier/identifier})" />
+                    </m:HBox>
+                    <m:HBox class="sapUiTinyMarginBottom" renderType="Bare">
+                        <m:Label id="_IDGenLabel5" text="{i18n>ObjectCityTitle}:" class="sapUiTinyMarginEnd" />
+                        <m:Text id="_IDGenObjectAttribute4" text="{supplier/city} ({supplier/postCode})" />
+                    </m:HBox>
+                    <m:HBox renderType="Bare">
+                        <m:Label id="_IDGenLabel6" text="{i18n>ObjectPhoneTitle}:" class="sapUiTinyMarginEnd" />
+                        <m:Text id="_IDGenObjectAttribute5" text="{supplier/phone}" />
+                    </m:HBox>
+                </m:VBox>
+                <m:VBox id="_IDGenVBox3" class="sapUiMediumMarginEnd sapUiSmallMarginBottom">
+                    <m:Title id="_IDGenLabel7" text="{i18n>ObjectPriceTitle}" class="sapUiTinyMarginBottom" />
+                    <m:ObjectNumber id="_IDGenObjectAttribute6" number="{price}" unit="{currency_code}" class="sapMObjectNumber sapMObjectNumberLarge sapMObjectNumberText sapMObjectNumber sapMObjectNumberLarge sapMObjectNumberUnit" wrapping="false" />
+                </m:VBox>
+            </m:FlexBox>
+        </headerContent>
+
+        <sections>
+            <ObjectPageSection id="_IDGenObjectPageSection1" title="{i18n>ObjectDescriptionTabTitle}" titleUppercase="false">
+                <subSections>
+                    <ObjectPageSubSection id="_IDGenObjectPageSubSection1" showTitle="false">
+                        <blocks>
+                            <form:SimpleForm id="_IDGenSimpleForm1" class="sapUxAPObjectPageSubSectionAlignContent" layout="ColumnLayout" columnsM="2" columnsL="3" columnsXL="4">
+                                <m:Label id="_IDGenLabel8" text="{i18n>ObjectProductDescription}" />
+                                <m:Text id="_IDGenText1" text="{description}" />
+                            </form:SimpleForm>
+                        </blocks>
+                    </ObjectPageSubSection>
+                </subSections>
+            </ObjectPageSection>
+            <ObjectPageSection id="_IDGenObjectPageSection2" title="{i18n>ObjectProductInformationTabTitle}" titleUppercase="false">
+                <subSections>
+                    <ObjectPageSubSection id="_IDGenObjectPageSubSection2" showTitle="false">
+                        <blocks>
+                            <form:SimpleForm id="_IDGenSimpleForm2" class="sapUxAPObjectPageSubSectionAlignContent" layout="ColumnLayout" columnsM="2" columnsL="3" columnsXL="4">
+                                <m:Label id="_IDGenLabel9" text="{i18n>ObjectProductId}" />
+                                <m:Text id="_IDGenText2" text="{identifier}" />
+
+                                <m:Label id="_IDGenLabel10" text="{i18n>ObjectProductName}" />
+                                <m:Text id="_IDGenText3" text="{title}" />
+
+                                <m:Label id="_IDGenLabel11" text="{i18n>ObjectProductWeight}" />
+                                <m:Text id="_IDGenText4" text="{weight}" />
+
+                                <m:Label id="_IDGenLabel12" text="{i18n>ObjectProductIngredients}" />
+                                <m:Text id="_IDGenText5" text="{ingredients}" />
+
+                                <m:Label id="_IDGenLabel13" text="{i18n>ObjectProductFormat}" />
+                                <m:Text id="_IDGenText6" text="{format}" />
+
+                                <m:Label id="_IDGenLabel14" text="{i18n>ObjectProductPrice}" />
+                                <m:Text id="_IDGenText7" text="{price} {currency_code}" />
+
+                                <m:Label id="_IDGenLabel15" text="{i18n>ObjectProductRating}" />
+                                <m:RatingIndicator id="_IDGenRatingIndicator2" maxValue="5" value="{rate}" editable="false" />
+
+                                <m:Label id="_IDGenLabel16" text="{i18n>ObjectProductInStock}" />
+                                <m:ProgressIndicator
+                                    id="_IDGenProgressIndicator1"
+                                    percentValue="{availability}"
+                                    displayValue="{availability} of 100"
+                                    showValue="true"
+                                    state="{
+                                    path: 'availability',
+                                    formatter: '.formatter.quantityState'}"
+                                />
+                            </form:SimpleForm>
+                        </blocks>
+                    </ObjectPageSubSection>
+                </subSections>
+            </ObjectPageSection>
+
+            <ObjectPageSection id="_IDGenObjectPageSection3" title="{i18n>ObjectSupplierinfoTabTitle}" titleUppercase="false">
+                <subSections>
+                    <ObjectPageSubSection id="_IDGenObjectPageSubSection3" showTitle="false">
+                        <blocks>
+                            <form:SimpleForm id="_IDGenSimpleForm3" class="sapUxAPObjectPageSubSectionAlignContent" layout="ColumnLayout" columnsM="2" columnsL="3" columnsXL="4">
+                                <m:Label id="_IDGenLabel17" text="{i18n>ObjectSupplierName}" />
+                                <m:Text id="_IDGenText8" text="{supplier/name} ({supplier/identifier})" />
+
+                                <m:Label id="_IDGenLabel18" text="{i18n>ObjectSupplierPhone}" />
+                                <m:Text id="_IDGenText9" text="{supplier/phone}" />
+
+                                <m:Label id="_IDGenLabel19" text="{i18n>ObjectSupplierStreet}" />
+                                <m:Text id="_IDGenText10" text="{supplier/street} ({supplier/building})" />
+
+                                <m:Label id="_IDGenLabel20" text="{i18n>ObjectSupplierCity}" />
+                                <m:Text id="_IDGenText11" text="{supplier/city} ({supplier/postCode})" />
+
+                                <m:Label id="_IDGenLabel21" text="{i18n>ObjectSupplierCountry}" />
+                                <m:Text id="_IDGenText12" text="{supplier/country}" />
+                            </form:SimpleForm>
+                        </blocks>
+                    </ObjectPageSubSection>
+                </subSections>
+            </ObjectPageSection>
+        </sections>
+        <footer>
+            <m:OverflowToolbar id="_IDGenOverflowToolbar1">
+                <m:ToolbarSpacer id="_IDGenToolbarSpacer1" />
+                <m:Button id="_IDGenButton8" type="Accept" text="Save" />
+                <m:Button id="_IDGenButton9" type="Reject" text="Cancel" />
+            </m:OverflowToolbar>
+        </footer>
+    </ObjectPageLayout>
+</mvc:View>

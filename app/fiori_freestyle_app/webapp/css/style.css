@@ -1,0 +1,58 @@
+.myColumns {
+   text-align: left;
+   display: block;
+}
+
+.sapUxAPObjectPageSectionTitleUppercase {
+   text-transform: none !important;
+}
+
+
+.sapMObjectNumberText {
+   display: inline-block;
+   white-space: pre;
+   overflow: hidden;
+   text-overflow: ellipsis;
+   max-width: 100%;
+   text-decoration: none;
+   min-height: 1rem;
+   vertical-align: middle;
+   line-height: 1rem;
+   font-family: "72","72full",Arial,Helvetica,sans-serif;
+   text-shadow: 0 0 0.125rem #fff;
+   font-weight: normal !important;
+}
+
+.sapMObjectNumberLarge .sapMObjectNumberText, .sapMObjectNumberLarge .sapMObjectNumberUnit {
+   font-size: 1.5rem;
+}
+
+.sapMObjectNumber .sapMObjectNumberLarge .sapMObjectNumberText .sapMObjectNumber .sapMObjectNumberLarge .sapMObjectNumberUnit {
+   line-height: 2rem;
+   vertical-align: middle;
+   height: 2rem;
+}
+
+.sapMObjectNumberUnit {
+   display: inline-block;
+   white-space: nowrap;
+   overflow: hidden;
+   text-overflow: ellipsis;
+   max-width: 100%;
+   text-decoration: none;
+   height: 1rem;
+   line-height: 1rem;
+   vertical-align: middle;
+   font-family: "72-Light","72-Lightfull","72","72full",Arial,Helvetica,sans-serif;
+   text-shadow: 0 0 0.125rem #fff;
+}
+
+.mySvm1 .sapMTitle {
+   font-size: 2rem !important;
+   font-family: "72Black","72","72full",Arial,Helvetica,sans-serif !important;
+}
+
+.mySvm2 .sapMTitle {
+   font-size: 1.25rem !important;
+   font-family: "72Black","72","72full",Arial,Helvetica,sans-serif !important;
+}

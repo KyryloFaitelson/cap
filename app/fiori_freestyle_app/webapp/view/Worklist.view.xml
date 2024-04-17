@@ -1,0 +1,228 @@
+<mvc:View controllerName="com.nttdata.fiorifreestyleapp.controller.Worklist" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:f="sap.f" xmlns:layout="sap.ui.layout" height="100%" xmlns:core="sap.ui.core" xmlns:fb="sap.ui.comp.filterbar" xmlns:svm="sap.ui.comp.smartvariants">
+    <f:DynamicPage id="dynamicPageId">
+        <!-- DynamicPage Title -->
+        <f:title>
+            <f:DynamicPageTitle>
+                <f:expandedHeading>
+                    <svm:SmartVariantManagementUi2 id="expandedSvm" showExecuteOnSelection="true" class="mySvm1"/>
+                </f:expandedHeading>
+                <f:snappedHeading>
+                    <svm:SmartVariantManagementUi2 id="snappedSvm" showExecuteOnSelection="true" class="mySvm2"/>
+                </f:snappedHeading>
+                <f:content>
+                    <OverflowToolbar />
+                </f:content>
+                <f:actions>
+                    <MenuButton icon="sap-icon://action" type="Transparent" />
+                </f:actions>
+                <f:navigationActions />
+            </f:DynamicPageTitle>
+        </f:title>
+        <!-- DynamicPage Header -->
+        <f:header>
+            <f:DynamicPageHeader>
+                <f:content>
+                    <fb:FilterBar id="filterbar" persistencyKey="myPersKey" useToolbar="false" search=".onSearch" filterChange=".onFilterChange" afterVariantLoad=".onAfterVariantLoad">
+                        <fb:filterGroupItems>
+                            <fb:FilterGroupItem name="search" groupName="Group1" visibleInFilterBar="true" >
+                                <fb:control>
+                                    <SearchField search=".onFilter" />
+                                </fb:control>
+                            </fb:FilterGroupItem>
+                            <fb:FilterGroupItem name="0" label="Editing Status" groupName="Group1" visibleInFilterBar="true">
+                                <fb:control>
+                                    <ComboBox name="SupplierName" selectionChange=".onSelectionChange" items="{
+												path: '/Suppliers',
+												templateShareable: true
+											}">
+                                        <core:Item key="{ID}" text="{name}" />
+                                    </ComboBox>
+                                </fb:control>
+                            </fb:FilterGroupItem>
+                            <fb:FilterGroupItem name="1" label="ID" groupName="Group1" visibleInFilterBar="true">
+                                <fb:control>
+                                    <MultiInput width="100%" valueHelpRequest=".onValueHelpRequested" suggestionRows="{
+				                                path: '/Products',
+				                                length: 10
+			                                    }">
+                                        <suggestionColumns>
+                                            <Column>
+                                                <Label text="Product Code" />
+                                            </Column>
+                                            <Column>
+                                                <Label text="Product Name" />
+                                            </Column>
+                                        </suggestionColumns>
+                                        <suggestionRows>
+                                            <ColumnListItem>
+                                                <Label text="{title}" />
+                                                <Label text="{price}" />
+                                            </ColumnListItem>
+                                        </suggestionRows>
+                                    </MultiInput>
+                                </fb:control>
+                            </fb:FilterGroupItem>
+                            <fb:FilterGroupItem name="2" label="Name" groupName="Group1" visibleInFilterBar="true">
+                                <fb:control>
+                                    <MultiInput width="100%" valueHelpRequest=".onValueHelpRequested" suggestionRows="{
+				                                path: '/Products',
+				                                length: 10
+			                                    }">
+                                        <suggestionColumns>
+                                            <Column>
+                                                <Label text="Product Code" />
+                                            </Column>
+                                            <Column>
+                                                <Label text="Product Name" />
+                                            </Column>
+                                        </suggestionColumns>
+                                        <suggestionRows>
+                                            <ColumnListItem>
+                                                <Label text="{title}" />
+                                                <Label text="{price}" />
+                                            </ColumnListItem>
+                                        </suggestionRows>
+                                    </MultiInput>
+                                </fb:control>
+                            </fb:FilterGroupItem>
+                            <fb:FilterGroupItem name="3" label="In Stock" groupName="Group1" visibleInFilterBar="true">
+                                <fb:control>
+                                    <MultiInput width="100%" valueHelpRequest=".onValueHelpRequested" suggestionRows="{
+				                                path: '/Products',
+				                                length: 10
+			                                    }">
+                                        <suggestionColumns>
+                                            <Column>
+                                                <Label text="Product Code" />
+                                            </Column>
+                                            <Column>
+                                                <Label text="Product Name" />
+                                            </Column>
+                                        </suggestionColumns>
+                                        <suggestionRows>
+                                            <ColumnListItem>
+                                                <Label text="{title}" />
+                                                <Label text="{price}" />
+                                            </ColumnListItem>
+                                        </suggestionRows>
+                                    </MultiInput>
+                                </fb:control>
+                            </fb:FilterGroupItem>
+                            <fb:FilterGroupItem name="4" label="Price" groupName="Group1" visibleInFilterBar="true">
+                                <fb:control>
+                                    <MultiInput width="100%" valueHelpRequest=".onValueHelpRequested" suggestionRows="{
+				                                path: '/Products',
+				                                length: 10
+			                                    }">
+                                        <suggestionColumns>
+                                            <Column>
+                                                <Label text="Product Code" />
+                                            </Column>
+                                            <Column>
+                                                <Label text="Product Name" />
+                                            </Column>
+                                        </suggestionColumns>
+                                        <suggestionRows>
+                                            <ColumnListItem>
+                                                <Label text="{title}" />
+                                                <Label text="{price}" />
+                                            </ColumnListItem>
+                                        </suggestionRows>
+                                    </MultiInput>
+                                </fb:control>
+                            </fb:FilterGroupItem>
+                        </fb:filterGroupItems>
+                    </fb:FilterBar>
+                </f:content>
+            </f:DynamicPageHeader>
+        </f:header>
+        <f:content>
+            <Table
+                id="table"
+                width="auto"
+                mode="MultiSelect"
+                items="{
+                                path: '/Products',
+                                sorter: {
+                                    path: 'ID',
+                                    descending: false
+                                }
+                            }"
+                noDataText="{worklistView>/tableNoDataText}"
+                busyIndicatorDelay="{worklistView>/tableBusyDelay}"
+                growing="true"
+                growingScrollToLoad="true"
+                updateFinished=".onUpdateFinished"
+                class="sapFDynamicPageAlignContent"
+                sticky="HeaderToolbar,ColumnHeaders"
+				inset="false"
+            >
+                <headerToolbar>
+                    <OverflowToolbar id="otbSubheader">
+                        <Title id="tableHeader" text="{worklistView>/worklistTableTitle}" level="H3" />
+                        <ToolbarSpacer id="_IDGenToolbarSpacer1" />
+                        <Button id="_IDGenButton1" text="Create" type="Transparent" press="onCreate" />
+                        <Button id="_IDGenButton2" text="Delete" type="Transparent" press="onDelete" />
+                        <ToolbarSeparator id="_IDGenToolbarSeparator1" />
+						<OverflowToolbarButton tooltip="Group" type="Transparent" text="Group" icon="sap-icon://action-settings" press="onSettings"/>
+						<OverflowToolbarMenuButton tooltip="Export" type="Transparent" text="Export" buttonMode="Split" icon="sap-icon://excel-attachment" defaultAction="onDefaultActionAccept" beforeMenuOpen="onBeforeMenuOpen" useDefaultActionOnly="true">
+							<menu>
+								<Menu itemSelected="onMenuAction">
+									<MenuItem text="Export as PDF" />
+									<MenuItem text="Export to Excel"/>
+								</Menu>
+							</menu>
+						</OverflowToolbarMenuButton>
+                    </OverflowToolbar>
+                </headerToolbar>
+
+                <columns>
+                    <Column id="imageColumn" hAlign="Begin" demandPopin="false" minScreenWidth="Tablet" width="20%">
+                        <Text text="{i18n>tableImageColumnTitle}" id="imageColumnTitle" />
+                    </Column>
+                    <Column id="idColumn" hAlign="Begin" demandPopin="true" minScreenWidth="Tablet" width="15%">
+                        <Text text="{i18n>tableIDColumnTitle}" id="idColumnTitle" />
+                    </Column>
+                    <Column id="nameColumn" hAlign="Begin" demandPopin="true" minScreenWidth="Tablet" width="20%">
+                        <Text text="{i18n>tableNameColumnTitle}" id="nameColumnTitle" />
+                    </Column>
+                    <Column id="suplierColumn" hAlign="Begin" demandPopin="true" minScreenWidth="Tablet" width="15%">
+                        <Text text="{i18n>tableSupplierColumnTitle}" id="supplierColumnTitle" />
+                    </Column>
+                    <Column id="stockColumn" hAlign="End" demandPopin="true" minScreenWidth="Tablet" width="20%">
+                        <Text text="{i18n>tableStockColumnTitle}" id="stockColumnTitle" />
+                    </Column>
+                    <Column id="priceColumn" hAlign="End" demandPopin="true" minScreenWidth="Tablet" width="10%">
+                        <Text text="{i18n>tablePriceColumnTitle}" id="priceColumnTitle" />
+                    </Column>
+                </columns>
+
+                <items>
+                    <ColumnListItem id="_IDGenColumnListItem1" type="Navigation" press=".onPress">
+                        <cells>
+                            <Avatar id="_IDGenAvatar1" src="{image_url}" displaySize="S" displayShape="Square" class="sapUiTinyMarginEnd" />
+                            <ObjectIdentifier id="_IDGenObjectIdentifier1" title="{identifier}" />
+                            <Text id="_IDGenText1" text="{title}" />
+                            <Text id="_IDGenText2" text="{supplier/name}" />
+                            <ProgressIndicator
+                                id="_IDGenProgressIndicator1"
+                                width="100%"
+                                percentValue="{availability}"
+                                displayValue="{availability} of 100"
+                                showValue="true"
+                                state="{
+                                                    path: 'availability',
+                                                    formatter: '.formatter.quantityState'}"
+                            />
+                            <Text id="_IDGenText3" text="{price} {currency_code}" />
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </f:content>
+        <!-- DynamicPage Footer -->
+        <f:footer>
+            <OverflowToolbar />
+        </f:footer>
+    </f:DynamicPage>
+</mvc:View>
